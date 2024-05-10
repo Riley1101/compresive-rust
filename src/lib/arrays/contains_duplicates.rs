@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 
 pub fn contains_dups() -> bool {
     let v = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1];
@@ -11,4 +11,30 @@ pub fn contains_dups() -> bool {
         s.insert(i);
     }
     false
+}
+
+pub fn valid_anagram(s: String, t: String) -> bool {
+    let mut set: HashMap<char, usize> = HashMap::new();
+
+    for i in s.chars() {
+        let x = set.get_mut(&i);
+        match x {
+            Some(val) => *val += 1,
+            None => {
+                set.insert(i, 1);
+            }
+        }
+    }
+    for j in t.chars() {
+        let x = set.get_mut(&j);
+        match x {
+            Some(val) => {
+                *val -= 1;
+            }
+            None => {
+                return false;
+            }
+        }
+    }
+    true
 }
