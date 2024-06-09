@@ -8,13 +8,17 @@ pub fn contains_dups() -> bool {
         if s.contains(&i) {
             return true;
         }
-        s.insert(i);
-    }
+        s.insert(i); }
+
     false
 }
 
 pub fn valid_anagram(s: String, t: String) -> bool {
     let mut set: HashMap<char, usize> = HashMap::new();
+
+    if s.len() != t.len() {
+        return false;
+    };
 
     for i in s.chars() {
         let x = set.get_mut(&i);
@@ -25,6 +29,7 @@ pub fn valid_anagram(s: String, t: String) -> bool {
             }
         }
     }
+
     for j in t.chars() {
         let x = set.get_mut(&j);
         match x {
@@ -36,5 +41,6 @@ pub fn valid_anagram(s: String, t: String) -> bool {
             }
         }
     }
+
     true
 }
