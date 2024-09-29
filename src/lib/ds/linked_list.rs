@@ -1,3 +1,4 @@
+#![allow(unused)]
 #[derive(Debug)]
 pub struct Node {
     value: i32,
