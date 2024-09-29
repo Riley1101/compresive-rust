@@ -2,6 +2,26 @@ pub fn factorial(n: usize) -> usize {
     (1..=n).product()
 }
 
+pub fn is_sorted_vec(arr: Vec<usize>, n: usize) -> bool {
+    if n == 1 {
+        return true;
+    }
+    if arr[n - 1] < arr[n - 2] {
+        false
+    } else {
+        is_sorted_vec(arr, n - 1)
+    }
+}
+
+#[cfg(test)]
+mod is_vec_sorted {
+    use super::*;
+    #[test]
+    fn sorted_vec() {
+        assert!(is_sorted_vec([1, 2, 3, 4, 5].to_vec(), 4), "Sorted");
+    }
+}
+
 #[cfg(test)]
 mod should_correctly_recurse {
     use super::*;
