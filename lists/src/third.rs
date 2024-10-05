@@ -34,6 +34,10 @@ impl<T> List<T> {
     pub fn peek(&self) -> Option<&T> {
         self.head.as_ref().map(|node| &node.elem)
     }
+
+    pub fn peek_mut(&mut self) -> Option<&mut T> {
+        self.head.as_mut().map(|node| &mut node.elem)
+    }
 }
 
 #[cfg(test)]
@@ -44,5 +48,9 @@ mod test {
         let mut list: List<i32> = List::new();
         list.push(12);
         assert_eq!(list.peek(), Some(&12));
+
+        let _ = list.peek_mut().map(|node| *node = 14);
+
+        assert_eq!(list.peek(), Some(&14));
     }
 }
