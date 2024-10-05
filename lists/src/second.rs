@@ -52,3 +52,19 @@ impl Drop for List {
         }
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    #[test]
+    fn singly_list_list() {
+        let mut list = List::new();
+        assert_eq!(list.pop(), None);
+
+        list.push(12);
+        list.push(13);
+        list.push(14);
+
+        assert_eq!(list.pop(), Some(14));
+    }
+}

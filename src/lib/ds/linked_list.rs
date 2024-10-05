@@ -39,7 +39,6 @@ impl LinkedList {
         let mut count = 0;
         let mut cur = self.head;
         while cur.is_some() {
-            println!("{:?}", cur);
             count += 1;
             cur = cur.unwrap().next;
         }
