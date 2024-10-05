@@ -30,4 +30,19 @@ impl<T> List<T> {
             node.elem
         })
     }
+
+    pub fn peek(&self) -> Option<&T> {
+        self.head.as_ref().map(|node| &node.elem)
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    #[test]
+    fn peek() {
+        let mut list: List<i32> = List::new();
+        list.push(12);
+        assert_eq!(list.peek(), Some(&12));
+    }
 }
